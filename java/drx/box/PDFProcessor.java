@@ -13,7 +13,7 @@ import org.apache.pdfbox.rendering.PDFRenderer;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.commons.codec.digest.DigestUtils;
 /**
- *
+ * Utility to get basic metadata, first page text and png image.
  * @author Dave
  */
 public class PDFProcessor {
