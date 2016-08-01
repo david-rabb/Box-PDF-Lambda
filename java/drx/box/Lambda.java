@@ -1,7 +1,7 @@
 package drx.box;
 
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.amazonaws.services.lambda.runtime.Context; 
+import com.amazonaws.services.lambda.runtime.Context;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -12,7 +12,7 @@ import java.util.Map;
  * @author Dave
  */
 public class Lambda implements RequestHandler<Lambda.Request, Lambda.Response> {
-    
+
   @Override
   public Lambda.Response handleRequest(Request request, Context context) {
     Response response = new Response();
@@ -26,13 +26,10 @@ public class Lambda implements RequestHandler<Lambda.Request, Lambda.Response> {
         throw new RuntimeException("missing boxFileId");
       }
 
-      // connect to Box
+      // connect to Box and get PDF
       long t0 = System.currentTimeMillis();
-
-      // get PDF
       byte[] fileBytes = BoxDownload.getFile(request.boxAuthToken, request.boxFileId);
       System.out.println("File size: "+(fileBytes.length/1000)+" KB");
-      //FileInputStream in = new FileInputStream(request.name);
 
       // extract metadata, text & image
       pdf = new PDFProcessor(fileBytes);
@@ -42,8 +39,6 @@ public class Lambda implements RequestHandler<Lambda.Request, Lambda.Response> {
       response.metadata = pdf.getMetadata();
       response.frontText = pdf.getText(1);
       response.png = java.util.Base64.getEncoder().encodeToString(pdf.getImage(1));
-      //if (response.frontText.length()>100) response.frontText = response.frontText.substring(0, 100)+"...";
-      //if (response.png.length()>100) response.png = response.png.substring(0, 100)+"...";
 
       // return document
       response.status = "OK";
