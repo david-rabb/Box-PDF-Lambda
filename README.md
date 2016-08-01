@@ -5,13 +5,13 @@ AWS Lambda Handler to process a PDF on Box and return metadata synchronously.
     https://zc5cpkqhrg.execute-api.us-west-2.amazonaws.com/prod/BoxPDFService
 
 #### API Key Request Header
-    x-api-key: <api gateway key>
+    x-api-key: API_GATEWAY_KEY
 
 ### Request
 ```
 {
-  "boxAuthToken": "xxx...",
-  "boxFileId": "000..."
+  "boxAuthToken": "BOX_ACCESS_TOKEN",
+  "boxFileId": "BOX_FILE_ID"
 }
 ```
 
@@ -32,4 +32,4 @@ AWS Lambda Handler to process a PDF on Box and return metadata synchronously.
 }
 ```
 ### Curl Example
-    curl -H "Content-Type: application/json" -H "x-api-key: csNL1Y1PeL3RpqvERPpZr7rfqBPLYye62M" -d '{"boxAuthToken":"abc","boxFileId":"123"}' https://zc5cpkqhrg.execute-api.us-west-2.amazonaws.com/prod/BoxPDFService
+    curl -H "Content-Type: application/json" -H "x-api-key: API_GATEWAY_KEY" -d '{"boxAuthToken":"BOX_ACCESS_TOKEN","boxFileId":"BOX_FILE_ID"}' https://zc5cpkqhrg.execute-api.us-west-2.amazonaws.com/prod/BoxPDFService
