@@ -32,4 +32,4 @@ AWS Lambda Handler to process a PDF on Box and return metadata synchronously.
 }
 ```
 ### Curl Example
-    curl -H "Content-Type: application/json" -H "x-api-key: csNL1Y1PeL3RpqvERPpZr7rfqBPLYye62MoimifT" -d '{"boxAuthToken":"abc","boxFileId":"123"}' https://zc5cpkqhrg.execute-api.us-west-2.amazonaws.com/prod/BoxPDFService
+    curl -H "Content-Type: application/json" -H "x-api-key: csNL1Y1PeL3RpqvERPpZr7rfqBPLYye62M" -d '{"boxAuthToken":"abc","boxFileId":"123"}' https://zc5cpkqhrg.execute-api.us-west-2.amazonaws.com/prod/BoxPDFService
