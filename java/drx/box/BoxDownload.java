@@ -1,15 +1,15 @@
 package drx.box;
 
-import java.io.InputStream;
 import org.apache.http.client.fluent.Request;
 
 /**
- *
+ * Use Box API to download a file. Pass auth token and fileId then follow redirects to download
+ * file into byte array.
  * @author Dave
  */
 public class BoxDownload {
   public static final String BOX_API = "https://api.box.com/2.0/files/%s/content";
-  
+
   public static byte[] getFile(String authBearer, String fileId) {
     try {
       String url = String.format(BOX_API, fileId);
